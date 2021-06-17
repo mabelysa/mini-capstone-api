@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   get "producttwo_path", controller: "products", action: "body_spritz"
 
   get "productthree_path", controller: "products", action: "body_lotion"
+
+  get "/single_product" => "products#product1_params"
+
+  get "/single_product/:id" => "products#product1_params"
+
+  post "/body_params"
 end

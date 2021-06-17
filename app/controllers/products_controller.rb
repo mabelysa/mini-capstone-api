@@ -18,4 +18,13 @@ class ProductsController < ApplicationController
     product = Product.third
     render json: product.as_json
   end
+
+  def product1_params
+    # input_value = params["product name"]
+    # product = Product.find_by(name: input_value)
+    # render json: { message: "You have searched for #{product}"
+    product_id = params["id"]
+    product = Product.find_by(id: product_id)
+    render json: product.as_json
+  end
 end
