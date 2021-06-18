@@ -13,5 +13,11 @@ Rails.application.routes.draw do
 
   get "/single_product/:id" => "products#product1_params"
 
-  post "/body_params"
+  # post "/body_params"
+
+  get "/products" => "products#index"
+
+  get "/products/:id" => "products#show"
+
+  post "/products" => "products#create"
 end
