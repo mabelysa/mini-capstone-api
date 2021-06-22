@@ -10,4 +10,4 @@ product = Product.create(name: "body_butter", price: 25, image_url: "https://the
 
 product = Product.create(name: "body_spritz", price: 20, image_url: "https://www.riteaid.com/shop/media/catalog/product/0/2/026169038890.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=406&width=406&canvas=406:406", description: "to sparkle and shine like the star that you are!")
 
-product = Product.create(name: "body_lotion", price: 22, image_url: "https://images.ctfassets.net/py1g0h295kwf/642BqYhxBj3SKrbsOV2rlY/fa9c018cadc8f251483a53e0808446bf/AB_Ecomm_07_1116w1302h_badge.jpg?fit=crop&w=1116&h=1302", description: "a light coating to make your skin feel supple and new.")
+product = Product.create!(name: "body_lotion", price: 22, image_url: "https://images.ctfassets.net/py1g0h295kwf/642BqYhxBj3SKrbsOV2rlY/fa9c018cadc8f251483a53e0808446bf/AB_Ecomm_07_1116w1302h_badge.jpg?fit=crop&w=1116&h=1302", description: "a light coating to make your skin feel supple and new.")
