@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Product.destroy_all
+
 product = Product.create(name: "body_butter", price: 25, image_url: "https://thehouseandhomestead.com/wp-content/uploads/2017/08/Body-Butter-Feature-Photo-2-scaled.jpg", description: "silky smooth coating for all your dry days.")
 
 product = Product.create(name: "body_spritz", price: 20, image_url: "https://www.riteaid.com/shop/media/catalog/product/0/2/026169038890.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=406&width=406&canvas=406:406", description: "to sparkle and shine like the star that you are!")
