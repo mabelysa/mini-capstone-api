@@ -29,10 +29,19 @@ class ProductsController < ApplicationController
   end
 
   def index
-    products = Product.all
-    render json: products
-    # .as_json
+    if current_user
+      products = Product.all
+      render json: products.as_json
+    else
+      render json: []
+    end
   end
+
+  # def index
+  #   products = Product.all
+  #   render json: products
+  #   # .as_json
+  # end
 
   def show
     product_id = params[:id]
