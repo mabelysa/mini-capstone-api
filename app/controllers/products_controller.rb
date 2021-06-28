@@ -35,8 +35,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # product_id = params[:id]
-    product = Product.find_by(params[:id])
+    product_id = params[:id]
+    product = Product.find(product_id)
     render json: product
     # .as_json(methods: [:is_discounted?, :tax, :total])
   end
@@ -59,7 +59,8 @@ class ProductsController < ApplicationController
 
   def update
     product_id = params["id"]
-    product = Product.find_by(id: product_id)
+    product = Product.find(product_id)
+    # product = Product.find_by(id: product_id)
 
     product.name = params["name"] || product.name
     product.price = params["price"] || product.price
@@ -78,7 +79,7 @@ class ProductsController < ApplicationController
 
   def destroy
     product_id = params[:id]
-    product = Product.find_by(id: product_id)
+    product = Product.find(product_id)
     product.destroy
     render json: { message: "Product go bye bye!" }
   end
