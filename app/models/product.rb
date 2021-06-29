@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0 }
+  has_many :orders
 
   # allows me to do product.supplier
   # def supplier

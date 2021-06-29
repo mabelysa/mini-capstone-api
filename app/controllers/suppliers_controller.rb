@@ -10,7 +10,7 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    supplier = supplier.new(
+    supplier = Supplier.new(
       name: params["name"],
       email: params["email"],
       phone_number: params["phone_number"],
