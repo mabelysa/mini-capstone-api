@@ -78,7 +78,8 @@ class ProductsController < ApplicationController
     product.supplier_id = params["supplier_id"] || product.supplier_id
 
     if product.save
-      render json: product.as_json
+      render json: product
+      #as_json
     else
       render json: { errors: product.errors.full_messages },
              status: :unprocessable_entity
