@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def all_products
     product = Product.all
     render json: product.as_json
@@ -51,19 +53,23 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(
-      name: params["name"],
-      price: params["price"],
-      image_url: params["image_url"],
-      description: params["description"],
-    )
-    if product.save
-      render json: product.as_json
+    if current_user && current_user.admin
+      product = Product.new(
+        name: params["name"],
+        price: params["price"],
+        image_url: params["image_url"],
+        description: params["description"],
+        supplier_id: params[:supplier_id],
+      )
+      if product.save
+        render json: product.as_json
+      else
+        render json: { errors: product.errors.full_messages },
+               status: 422
+      end
     else
-      render json: { errors: product.errors.full_messages },
-             status: 422
+      render json: {}, status: :unathorized
     end
-    # .as_json
   end
 
   def update
