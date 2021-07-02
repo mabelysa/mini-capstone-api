@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   # end
 
   belongs_to :supplier
+  has_many :CategoryProduct
 
   def is_discounted?
     if price <= 10
