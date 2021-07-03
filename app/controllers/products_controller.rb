@@ -32,12 +32,26 @@ class ProductsController < ApplicationController
 
   def index
     if current_user
-      products = Product.all
-      render json: products.as_json
+      if params[:category]
+        category = Category.find_by(name: params[:category])
+        products = category.products
+      else
+        products = Product.all
+        render json: products
+      end
     else
       render json: []
     end
   end
+
+  # def index
+  #   if current_user
+  #     products = Product.all
+  #     render json: products
+  #   else
+  #     render json: []
+  #   end
+  # end
 
   # def index
   #   products = Product.all
