@@ -2,23 +2,17 @@ class OrdersController < ApplicationController
   before_action :authenticate_user
 
   def create
-    product = Product.find_by(id: params[:product_id])
-    calculated_subtotal = product.price * params[:quantity].to_i
-    calculated_tax = calculated_subtotal * 0.09
-    calculated_total = calculated_subtotal + calculated_tax
+    carted_products = current_user.carted_products.where(status: "carted")
 
     order = Order.new(
-      product_id: params[:product_id],
-      quantity: params[:quantity],
-      subtotal: calculated_subtotal,
-      tax: calculated_tax,
-      total: calculated_total,
       user_id: current_user.id,
     )
     if order.save
-      render json: order.as_json
+      carted_products.update_all(status: "purchased", order_id: order.id)
+      order.money_math
+      render json: order
     else
-      render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: order.errors.full_messages }
     end
   end
 
